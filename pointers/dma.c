@@ -30,7 +30,7 @@ int *remove_odds(int *num, int size, int *out_size)
 
     // Step 4: Set output size
     *out_size = count_of_even;
-
+    
     return out_nums;
 }
 
