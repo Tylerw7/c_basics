@@ -7,43 +7,45 @@ struct Car {
     float fines;
 };
 
-struct Car printCarType(struct Car *car)
+void printCarType(struct Car car[], int len)
 {
-    struct Car return_car;
-
-    if (car->plate_nr > 500000)
+    for (int i = 0; i < len; i++)
     {
-        printf("Truck\n");
-    }
-    else if (car->plate_nr > 400000)
-    {
-        printf("Family car\n");
-    }
-    else if (car->plate_nr > 300000)
-    {
-        printf("Van\n");
-    }
-    else
-    {
-        printf("Invalid Plate Number\n");
+        if (car[i].plate_nr > 500000)
+        {
+            printf("Truck\n");
+        }
+        else if (car[i].plate_nr > 400000)
+        {
+            printf("Family car\n");
+        }
+        else if (car[i].plate_nr > 300000)
+        {
+            printf("Van\n");
+        }
+        else
+        {
+            printf("Invalid Plate Number\n");
+        }
     }
     
-    car->fines = 0.00;
-
-    return_car = *car;
-    return return_car;
 
 }
 
 
 int main()
 {
-    struct Car my_car = {.plate_nr = 449505, .fines = 150.44};
-    strcpy(my_car.owner_name, "Tyler");
-    struct Car new_car = printCarType(&my_car);
+    struct Car my_car[5] = {
+        {.plate_nr = 405000, .fines = 120.00}, 
+        {.plate_nr = 305000, .fines = 120.00}, 
+        {.plate_nr = 405000, .fines = 120.00}, 
+        };
+    //strcpy(my_car.owner_name, "Tyler");
+    printCarType(my_car, 5);
+    int bits = 0;
 
+    printf("total bits: %zu\n", sizeof(my_car));
 
-    printf("%s\t%d\t%f\n", new_car.owner_name, new_car.plate_nr, new_car.fines);
 
     return 0 ;
 }
