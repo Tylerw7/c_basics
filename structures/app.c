@@ -1,11 +1,19 @@
 #include <stdio.h>
 #include <string.h>
 
+struct Engine {
+    int number_of_cylinders;
+    int capacity;
+    int fuel_type;
+};
+
 struct Car {
+    struct Engine engine;
     char owner_name[8];
     int plate_nr;
     float fines;
 };
+
 
 void printCarType(struct Car car[], int len)
 {
