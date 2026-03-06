@@ -12,6 +12,7 @@ int main(void)
 {
     printf("%d ", fun());
     printf("%d ", fun());
+    
 
     return 0;
 }
