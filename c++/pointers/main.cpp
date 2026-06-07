@@ -7,6 +7,8 @@ int main()
 
     int* myAge = &age;
 
+    int* unknownPointer = nullptr;
+
     std::cout << *myAge;
 
     return 0;
