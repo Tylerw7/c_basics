@@ -1,4 +1,5 @@
 #include <iostream>
+#include "myHeader.h"
 
 class School
 {
@@ -42,6 +43,9 @@ int main()
 
     wife.banner();
     mine.banner();
+
+    Person me("Tyler");
+    me.title();
 
     return 0;
 }
