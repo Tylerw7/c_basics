@@ -66,6 +66,36 @@ class LinkedList
             temp = temp->next;
         }
       };
+
+      void append(int value)
+      {
+        Node* newNode = new Node(value);
+
+        if (head == nullptr)
+        {
+            head = newNode;
+            tail = newNode;
+        }
+        else
+        {
+            tail->next = newNode;
+            tail = newNode;
+        }
+
+        length += 1;
+
+      }
+
+
+      ~LinkedList()
+        {Node* temp = head;
+        while(head)
+        {
+          head = head->next;
+          delete temp;
+          temp = head;
+        }
+      }
 };
 
 
@@ -75,6 +105,10 @@ class LinkedList
 int main()
 {
     LinkedList* myLinkedList = new LinkedList(4);
+
+    myLinkedList->append(42);
+    myLinkedList->append(11);
+    myLinkedList->append(32);
 
     myLinkedList->printList();
 }
