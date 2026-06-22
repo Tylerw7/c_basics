@@ -109,6 +109,7 @@ int main()
     myLinkedList->append(42);
     myLinkedList->append(11);
     myLinkedList->append(32);
+    myLinkedList->append(95);
 
     myLinkedList->printList();
 }
