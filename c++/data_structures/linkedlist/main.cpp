@@ -86,6 +86,34 @@ class LinkedList
 
       }
 
+      void deleteLast()
+      {
+        if (head == nullptr)
+        {
+            std::cout << "List is empty!" << std::endl;
+            return;
+        }
+
+        Node* temp = head;
+        Node* pre = head;
+
+        while (temp->next != nullptr)
+        {
+            pre = temp;
+            temp = temp->next;
+        }
+        tail = pre;
+        pre->next = nullptr;
+        length--;
+
+        if (length == 0)
+        {
+            head = nullptr;
+            tail = nullptr;
+        }
+        delete temp;
+      }
+
 
       ~LinkedList()
         {Node* temp = head;
@@ -106,10 +134,12 @@ int main()
 {
     LinkedList* myLinkedList = new LinkedList(4);
 
-    myLinkedList->append(42);
-    myLinkedList->append(11);
-    myLinkedList->append(32);
-    myLinkedList->append(95);
+    // myLinkedList->append(42);
+    // myLinkedList->append(11);
+    // myLinkedList->append(32);
+    // myLinkedList->append(95);
+
+    myLinkedList->deleteLast();
 
     myLinkedList->printList();
 }
