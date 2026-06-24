@@ -132,6 +132,23 @@ class LinkedList
         length++;
       }
 
+      void deleteFirst()
+      {
+        if (head == nullptr) return;
+        Node* temp = head;
+        if (length == 1)
+        {
+            head = nullptr;
+            tail = nullptr;
+        }
+        else
+        {
+        head = head->next;
+        }
+        delete temp;
+        length--;
+      }
+
 
       ~LinkedList()
         {Node* temp = head;
@@ -160,6 +177,11 @@ int main()
     myLinkedList->prepend(1);
 
     myLinkedList->deleteLast();
+
+    myLinkedList->printList();
+
+    // delete first
+    myLinkedList->deleteFirst();
 
     myLinkedList->printList();
 }
