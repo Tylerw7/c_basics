@@ -95,23 +95,41 @@ class LinkedList
         }
 
         Node* temp = head;
-        Node* pre = head;
 
-        while (temp->next != nullptr)
-        {
-            pre = temp;
-            temp = temp->next;
-        }
-        tail = pre;
-        pre->next = nullptr;
-        length--;
-
-        if (length == 0)
+        if (length == 1) 
         {
             head = nullptr;
             tail = nullptr;
         }
+        else
+        {
+            Node* pre = head;
+            while (temp->next != nullptr)
+            {
+                pre = temp;
+                temp = temp->next;
+            }
+            tail = pre;
+            tail->next = nullptr;
+        }
         delete temp;
+        length--;
+      }
+
+      void prepend(int value)
+      {
+        Node* newNode = new Node(value);
+        if (head == nullptr)
+        {
+            head = newNode;
+            tail = newNode;
+        }
+        else
+        {
+            newNode->next = head;
+            head = newNode;
+        }
+        length++;
       }
 
 
@@ -134,10 +152,12 @@ int main()
 {
     LinkedList* myLinkedList = new LinkedList(4);
 
-    // myLinkedList->append(42);
-    // myLinkedList->append(11);
-    // myLinkedList->append(32);
-    // myLinkedList->append(95);
+    myLinkedList->append(42);
+    myLinkedList->append(11);
+    myLinkedList->append(32);
+    myLinkedList->append(95);
+
+    myLinkedList->prepend(1);
 
     myLinkedList->deleteLast();
 
