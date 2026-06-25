@@ -149,6 +149,19 @@ class LinkedList
         length--;
       }
 
+      Node* get(int index)
+      {
+        if (index < 0 || index >= length) return nullptr;
+
+        Node* temp = head;
+        for (int i = 0; i < index; i++)
+        {
+            temp = temp->next;
+        }
+
+        return temp;
+      }
+
 
       ~LinkedList()
         {Node* temp = head;
@@ -174,14 +187,16 @@ int main()
     myLinkedList->append(32);
     myLinkedList->append(95);
 
-    myLinkedList->prepend(1);
+    //myLinkedList->prepend(1);
 
-    myLinkedList->deleteLast();
+    //myLinkedList->deleteLast();
 
-    myLinkedList->printList();
+    //myLinkedList->printList();
 
     // delete first
-    myLinkedList->deleteFirst();
+    //myLinkedList->deleteFirst();
 
-    myLinkedList->printList();
+    //myLinkedList->printList();
+
+    std::cout << myLinkedList->get(0)->value;
 }
