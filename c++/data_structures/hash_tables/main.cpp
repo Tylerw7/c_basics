@@ -1,4 +1,4 @@
-
+#include <iostream>
 
 // We will use seperate chaining, not linear probing.
 //We will achieve this by using linked lists.
@@ -10,6 +10,24 @@
 //    your key value pairs will be distributed more randomly.
 
 
+class Node {
+    public:
+       std::string key;
+       int value;
+       Node* next;
+
+       Node(std::string key, int value)
+       {
+        this->key = key;
+        this->value = value;
+        next = nullptr;
+       }
+};
 
 
+class HashTable {
+    private:
+      static const int SIZE = 7;
+      Node* dataMap[SIZE];
+};
 
