@@ -31,6 +31,30 @@ class HashTable {
       Node* dataMap[SIZE];
 
     public:
+      int hash(std::string key) {
+        int hash = 0;
+        for(int i = 0; i < key.length(); i++) {
+            int asciiValue = int(key[i]);
+            hash = (hash + asciiValue * 23) % SIZE;
+        }
+        return hash;
+      }
+
+      void set(std::string key, int value) {
+        int index = hash(key);
+        Node* newNode = new Node(key,value);
+        if(dataMap[index] == nullptr) {
+            dataMap[index] = newNode;
+        } else {
+            Node* temp = dataMap[index];
+            while(temp->next != nullptr) {
+                temp = temp->next;
+            }
+            temp->next = newNode;
+        }
+      }
+
+
       void printTable() {
         for (int i = 0; i < SIZE; i++) {
             std::cout << i << ":" << std::endl;
@@ -49,5 +73,7 @@ class HashTable {
 
 int main() {
     HashTable* myHashTable = new HashTable();
+    myHashTable->set("Tyler", 33);
+    myHashTable->set("Precious", 30);
     myHashTable->printTable();
 }
