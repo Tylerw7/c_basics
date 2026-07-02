@@ -54,6 +54,20 @@ class HashTable {
         }
       }
 
+      int get(std::string key) {
+        int index = hash(key);
+        Node* temp = dataMap[index];
+        while(temp != nullptr) {
+            if(temp->key == key) {
+                return temp->value;
+            } else {
+                temp = temp->next;
+            }
+        }
+
+        return 0;
+      }
+
 
       void printTable() {
         for (int i = 0; i < SIZE; i++) {
@@ -75,5 +89,7 @@ int main() {
     HashTable* myHashTable = new HashTable();
     myHashTable->set("Tyler", 33);
     myHashTable->set("Precious", 30);
-    myHashTable->printTable();
+    //myHashTable->printTable();
+
+    std::cout << myHashTable->get("Tyler") << std::endl;
 }
