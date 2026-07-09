@@ -89,7 +89,7 @@ int main() {
     HashTable* myHashTable = new HashTable();
     myHashTable->set("Tyler", 33);
     myHashTable->set("Precious", 30);
-    //myHashTable->printTable();
+    //myHashTable->printTable(); 
 
     std::cout << myHashTable->get("Tyler") << std::endl;
 }
