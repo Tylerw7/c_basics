@@ -13,6 +13,10 @@ class Heap {
         return 2 * index + 1;
       }
 
+      int rightChild(int index) {
+        return 2 * index + 2;
+      }
+
 
     public:
       int parent(int index) {
@@ -29,10 +33,52 @@ class Heap {
         heap.push_back(value);
         int current = heap.size() - 1;
 
-        while (current > 0 
-            && heap[current] > heap[parent(current)]) {
+        while (current > 0 && heap[current] > heap[parent(current)]) {
             swap(current, parent(current));
             current = parent(current);
+        }
+      }
+
+      int remove() {
+        if (heap.empty()) {
+            return INT_MIN;
+        }
+
+        int max_value = heap.front();
+
+        if (heap.size() == 1) {
+            heap.pop_back();
+        } else {
+            heap[0] = heap.back();
+            heap.pop_back();
+            sinkDown(0);
+        }
+
+        return max_value;
+      }
+
+      void sinkDown(int index) {
+        int maxIndex = index;
+        while (true) {
+            int leftIndex = leftChild(index);
+            int rightIndex = rightChild(index);
+
+            if (leftIndex < heap.size() && heap[leftIndex] > heap[maxIndex]) {
+                maxIndex = leftIndex;
+            }
+
+            if (rightIndex < heap.size() && heap[rightIndex] > heap[maxIndex]) {
+                maxIndex = rightIndex;
+            }
+
+            if (maxIndex != index) {
+                swap(index, maxIndex);
+                index = maxIndex;
+            } else {
+                return;
+            }
+
+
         }
       }
 
@@ -57,6 +103,9 @@ int main() {
     heap1->insert(90);
     heap1->printHeap();
 
+    heap1->remove();
+
+    heap1->printHeap();
 
     return 0;
 }
