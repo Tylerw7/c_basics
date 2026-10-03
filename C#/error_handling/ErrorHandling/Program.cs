@@ -1,20 +1,27 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 class Program
 {
     static void Main(string[] args)
     {
-        int first = 20;
-        int second = 10;
+        List<int> numbers = new List<int>();
 
-        try
+        Random random = new Random();
+        
+
+        foreach (int i in Enumerable.Range(0, 10))
         {
-            bool result = first / second == 2;
+            int number = random.Next(1, 100);
+            numbers.Add(number);
+        }
+
+        foreach (int result in numbers)
+        {
             Console.WriteLine(result);
         }
-        catch (Exception e)
-        {
-            Console.WriteLine(e.Message);
-        }
+
+        Console.WriteLine("Program finished");
     }
 }
