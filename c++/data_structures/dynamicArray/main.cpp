@@ -10,4 +10,12 @@ class DynamicArray
 
     public:
 
-}
+        DynamicArray(int capacity)
+        {
+            size = 0;
+            _capacity = capacity;
+            arr = new int[_capacity];
+        };
+
+        
+};
